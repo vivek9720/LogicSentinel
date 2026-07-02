@@ -1,0 +1,10 @@
+build/
+out/
+*.o
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.zip
+.cache/
+

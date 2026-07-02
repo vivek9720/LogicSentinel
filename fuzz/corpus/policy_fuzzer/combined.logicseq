@@ -1,0 +1,9 @@
+principal alice roles=user mfa=true
+principal manager roles=manager mfa=true
+resource invoice initial=draft states=draft,submitted,approved,paid terminal=paid
+transition create resource=invoice from=any to=draft roles=user create=true effects=owner_actor,state=draft
+transition approve resource=invoice from=draft to=approved roles=manager guards=not_owner,mfa effects=approve,state=approved
+---
+op actor=alice action=create resource=invoice id=inv9 request=q1
+op actor=manager action=approve resource=invoice id=inv9 request=q2
+

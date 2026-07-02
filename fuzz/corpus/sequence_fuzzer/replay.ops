@@ -1,0 +1,6 @@
+op actor=alice action=create resource=invoice id=inv2 amount=10 request=r1
+op actor=alice action=submit resource=invoice id=inv2 request=r2
+op actor=manager action=approve resource=invoice id=inv2 request=r3
+op actor=manager action=pay resource=invoice id=inv2 request=r4
+op actor=manager action=pay resource=invoice id=inv2 request=r4
+

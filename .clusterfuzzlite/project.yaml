@@ -1,0 +1,6 @@
+fuzz_targets:
+  - spec_fuzzer
+  - sequence_fuzzer
+  - policy_fuzzer
+  - audit_fuzzer
+

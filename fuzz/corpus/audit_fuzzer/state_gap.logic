@@ -1,0 +1,4 @@
+principal ops roles=operator
+resource order initial=new states=new,review,done,orphan terminal=done
+transition finish resource=order from=any to=done roles=operator effects=state=done
+

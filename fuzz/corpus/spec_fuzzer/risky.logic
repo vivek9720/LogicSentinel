@@ -1,0 +1,5 @@
+principal alice roles=user
+resource refund initial=new states=new,approved,paid terminal=paid
+transition approve resource=refund from=any to=approved roles=user effects=approve,state=approved
+transition pay resource=refund from=approved to=paid roles=user effects=state=paid
+

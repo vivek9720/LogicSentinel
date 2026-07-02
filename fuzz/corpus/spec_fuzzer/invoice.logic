@@ -1,0 +1,9 @@
+principal alice roles=user mfa=true
+principal manager roles=manager mfa=true
+resource invoice initial=draft states=draft,submitted,approved,paid terminal=paid owner_required=true
+transition create resource=invoice from=any to=draft roles=user create=true effects=owner_actor,state=draft
+transition submit resource=invoice from=draft to=submitted roles=user guards=owner effects=state=submitted
+transition approve resource=invoice from=submitted to=approved roles=manager guards=not_owner,mfa effects=approve,state=approved
+transition pay resource=invoice from=approved to=paid roles=manager guards=not_replayed,mfa effects=state=paid
+invariant nonnegative resource=invoice check=amount_ge=0
+
